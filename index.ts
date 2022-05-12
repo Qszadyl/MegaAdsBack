@@ -19,6 +19,7 @@ app.get('/', async()=>{
     throw new Error('Damnn');
 })
 
+
 app.use(handleError);
 
 app.listen(3001, '0.0.0.0', ()=>{
