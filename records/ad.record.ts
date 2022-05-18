@@ -70,11 +70,15 @@ export class AdRecord implements AdEntity{
         });
     }
 
-    async insert(): Promise <string> {
+    async insert(): Promise <void> {
         if(!this.id){
             this.id = uuid();
+        }else{
+            throw new Error("Cannot inserted somthing that is already inserted")
         }
-        await pool.execute("INSERT INFO `ads`(`id`,`name`, `description`, `price`, `url`, `lat`, `lon`) VALUES (:id,:name, :description, :price, :url, :lat, :lon)",{
+        await pool.execute("INSERT INFO " +
+            "`ads`(`id`,`name`, `description`, `price`, `url`, `lat`, `lon`) " +
+            "VALUES (:id,:name, :description, :price, :url, :lat, :lon)",{
             id: this.id,
             name: this.name,
             description: this.description,
@@ -83,7 +87,7 @@ export class AdRecord implements AdEntity{
             lat: this.lat,
             lon: this.lon
         });
-        return this.id;
+
     }
 
 
