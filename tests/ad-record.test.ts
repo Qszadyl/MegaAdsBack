@@ -21,7 +21,7 @@ test("Can build AdRecord", () =>{
 test('Validates invalid price', ()=>{
     expect(()=> new AdRecord({
         ...defaultObj,
-        price: 2
+        price: -2
 
 })).toThrow('Cena nie może być mniejsza niż zero  ani przekraczać 9999999')
 
@@ -29,4 +29,4 @@ test('Validates invalid price', ()=>{
 })
 
 
-//TODO 
+//TODO
